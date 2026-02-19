@@ -87,9 +87,10 @@ ng serve
 
 
 
-### 👤 Author
-## Nahid Hasan Nobil
+## 👤 Author
+### Nahid Hasan Nobil
 
-# Bachelor of Science in Computer Science and Engineering form AIUB
+```text
+Bachelor of Science in Computer Science and Engineering form (AIUB)
 
-# Full-Stack Developer specializing in .NET and Angular
+Full-Stack Developer specializing in .NET and Angular
