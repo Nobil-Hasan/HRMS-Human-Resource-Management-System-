@@ -45,7 +45,7 @@ A comprehensive, full-stack **3-Tier Architecture** web application designed for
 
 ## 📂 Project Structure
 
-
+```text
 HRMS-Human-Resource-Management-System/
 ├── HRMS_Frontend/           # Angular Presentation Layer
 │   ├── src/app/guards/     # authGuard.ts (Secure access logic)
@@ -59,10 +59,11 @@ HRMS-Human-Resource-Management-System/
 
 
 ## ⚙️ Setup & Configuration
-# 1. Backend (API & BLL)
-Create an appsettings.json file in the HRMS.API folder. This file is ignored by Git to protect sensitive SMTP credentials:
 
-JSON
+### 1. Backend (API & BLL)
+Create an `appsettings.json` file in the `HRMS.API` folder. This file is ignored by Git to protect sensitive SMTP credentials:
+
+```json
 {
   "EmailSettings": {
     "Host": "smtp.gmail.com",
@@ -74,6 +75,7 @@ JSON
     "DefaultConnection": "Server=YOUR_SERVER;Database=HRMS_DB;Trusted_Connection=True;"
   }
 }
+
 
 #2. Frontend (Angular)
 Bash
