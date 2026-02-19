@@ -45,7 +45,7 @@ A comprehensive, full-stack **3-Tier Architecture** web application designed for
 
 ## 📂 Project Structure
 
-
+```text
 HRMS-Human-Resource-Management-System/
 ├── HRMS_Frontend/           # Angular Presentation Layer
 │   ├── src/app/guards/     # authGuard.ts (Secure access logic)
@@ -55,7 +55,7 @@ HRMS-Human-Resource-Management-System/
     ├── HRMS.API/           # Controllers (Auth, Employee, Payroll)
     ├── HRMS.BLL/           # Business Logic (Tax calculation & Email engines)
     └── HRMS.DAL/           # Data Access Layer (SQL Context & Repositories)
-
+```
 
 
 ## ⚙️ Setup & Configuration
@@ -75,20 +75,22 @@ Create an `appsettings.json` file in the `HRMS.API` folder. This file is ignored
     "DefaultConnection": "Server=YOUR_SERVER;Database=HRMS_DB;Trusted_Connection=True;"
   }
 }
+```
 
+##2. Frontend (Angular)
 
-#2. Frontend (Angular)
-Bash
+```Bash
 cd HRMS_Frontend/HRMS_Frontend
 npm install
 ng serve
+```
 
 
 
+###👤 Author
+##Nahid Hasan Nobil
 
-##👤 Author
-#Nahid Hasan Nobil
+```text
+#Bachelor of Science in Computer Science and Engineering form AIUB
 
-Bachelor of Science in Computer Science and Engineering form AIUB
-
-Full-Stack Developer specializing in .NET and Angular
+#Full-Stack Developer specializing in .NET and Angular
