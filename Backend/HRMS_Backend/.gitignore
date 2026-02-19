@@ -1,0 +1,17 @@
+## Visual Studio / .NET Core
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Sensitive Data
+# Protects your app password: cxla bqls rnew xudq
+appsettings.json
+appsettings.Development.json
+
+## Publishing
+/publish/
