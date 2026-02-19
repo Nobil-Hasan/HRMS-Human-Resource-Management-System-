@@ -45,7 +45,7 @@ A comprehensive, full-stack **3-Tier Architecture** web application designed for
 
 ## 📂 Project Structure
 
-```text
+
 HRMS-Human-Resource-Management-System/
 ├── HRMS_Frontend/           # Angular Presentation Layer
 │   ├── src/app/guards/     # authGuard.ts (Secure access logic)
