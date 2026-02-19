@@ -1,0 +1,32 @@
+<div class="login-wrapper d-flex justify-content-center align-items-center vh-100">
+  <div class="hrms-card p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold text-primary">HRMS Portal</h2>
+      <p class="text-muted small">Username and Password are required to access the system</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label fw-semibold small">Username</label>
+        <input type="text" id="username" formControlName="username" class="form-control custom-input" 
+               placeholder="Enter admin username"
+               [class.is-invalid]="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label fw-semibold small">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control custom-input" 
+               placeholder="••••••••"
+               [class.is-invalid]="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger py-2 border-0 small text-center mb-3">
+        <i class="bi bi-exclamation-circle me-2"></i> {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm" [disabled]="loginForm.invalid">
+        Sign In
+      </button>
+    </form>
+  </div>
+</div>

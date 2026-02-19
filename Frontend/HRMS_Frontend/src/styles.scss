@@ -1,0 +1,13 @@
+// Standard variables for the HRMS theme
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,118 @@
+<div class="payroll-container px-4 mt-4">
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="hrms-card shadow-sm h-100 p-4">
+        <div class="d-flex align-items-center mb-3 pb-2 border-bottom">
+          <i class="bi bi-gear-wide-connected text-primary fs-4 me-2"></i>
+          <div>
+            <h5 class="fw-bold mb-0">Run Payroll</h5>
+            <small class="text-muted">Process monthly components</small>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <label class="form-label small fw-bold text-secondary">Select Staff Member</label>
+          <select class="form-select custom-input shadow-sm" [(ngModel)]="selectedEmployeeId">
+            <option [ngValue]="null" disabled selected>Choose an employee...</option>
+            <option *ngFor="let emp of employees" [ngValue]="emp.id">
+              {{ emp.name }} ({{ emp.department }})
+            </option>
+          </select>
+          <p class="text-muted smaller mt-2">Trigger tax (15%) and deduction calculations for the selected record.</p>
+        </div>
+
+        <button class="btn btn-primary w-100 btn-hrms shadow-sm" (click)="runPayroll()" [disabled]="!selectedEmployeeId">
+          <i class="bi bi-play-fill me-1"></i> Process Payroll
+        </button>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="hrms-card shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+          <h5 class="fw-bold mb-0">Payroll History & Reports</h5>
+          <span class="badge bg-soft-primary text-primary">{{ reports.length }} Records</span>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light">
+              <tr>
+                <th>Employee Name</th>
+                <th>Gross Pay</th>
+                <th>Tax (15%)</th>
+                <th>Net Pay</th>
+                <th class="text-end">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let report of reports">
+                <td class="fw-semibold text-dark">{{ report.employeeName }}</td>
+                <td>{{ report.grossPay | currency }}</td>
+                <td class="text-danger">-{{ report.taxAmount | currency }}</td>
+                <td class="fw-bold text-success">{{ report.netPay | currency }}</td>
+                <td class="text-end">
+                  <button class="btn btn-outline-info btn-sm rounded-pill px-3" (click)="viewSummary(report)">
+                    <i class="bi bi-file-earmark-text me-1"></i> Payslip
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="selectedReport" class="modal d-block" tabindex="-1" style="background: rgba(0,0,0,0.5)">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg" style="border-radius: 15px; overflow: hidden;">
+      <div class="modal-header bg-primary text-white border-0">
+        <h6 class="modal-title fw-bold">Professional Payslip View</h6>
+        <button type="button" class="btn-close btn-close-white" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body bg-light p-4">
+        <div id="print-section" class="p-4 bg-white rounded shadow-sm">
+          <div class="text-center mb-4">
+            <h4 class="fw-bold text-primary mb-1">AIUB HRMS</h4>
+            <p class="text-muted small">Official Employee Payslip</p>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-6">
+              <span class="text-muted smaller text-uppercase">Employee</span>
+              <p class="fw-bold mb-0">{{ selectedReport.employeeName }}</p>
+            </div>
+            <div class="col-6 text-end">
+              <span class="text-muted smaller text-uppercase">Pay Date</span>
+              <p class="fw-bold mb-0">{{ today | date:'mediumDate' }}</p>
+            </div>
+          </div>
+          
+          <hr>
+          
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-secondary">Basic / Gross Pay</span>
+            <span class="fw-semibold">{{ selectedReport.grossPay | currency }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span class="text-secondary">Tax Deduction (15%)</span>
+            <span class="text-danger fw-semibold">-{{ selectedReport.taxAmount | currency }}</span>
+          </div>
+          
+          <div class="border-top pt-3 mt-3 d-flex justify-content-between align-items-center">
+            <span class="h5 fw-bold mb-0">Total Net Pay</span>
+            <span class="h4 fw-bold text-success mb-0">{{ selectedReport.netPay | currency }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 bg-white">
+        <button type="button" class="btn btn-secondary btn-sm px-4" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary btn-sm px-4 shadow-sm" (click)="printPayslip()">
+          <i class="bi bi-printer me-1"></i> Print / Save PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

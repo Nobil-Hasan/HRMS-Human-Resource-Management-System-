@@ -1,0 +1,50 @@
+<div class="salary-form-container mt-4">
+  <div class="hrms-card shadow-sm border-0 p-4 bg-white rounded">
+    <div class="form-header mb-4 pb-2 border-bottom">
+      <h3 class="fw-bold text-primary mb-1">Salary Revision</h3>
+      <p class="text-muted small">Updating financial records for: <strong>{{ employeeName }}</strong></p>
+    </div>
+
+    <form [formGroup]="salaryForm" (ngSubmit)="onSubmit()">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small text-secondary">Base Salary</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="number" formControlName="baseSalary" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small text-secondary">Effective Date</label>
+          <input type="date" formControlName="effectiveDate" class="form-control">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small text-success">Bonuses</label>
+          <div class="input-group">
+            <span class="input-group-text text-success">$</span>
+            <input type="number" formControlName="bonuses" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold small text-danger">Deductions</label>
+          <div class="input-group">
+            <span class="input-group-text text-danger">$</span>
+            <input type="number" formControlName="deductions" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 d-flex gap-3">
+        <button type="submit" class="btn btn-primary px-5" [disabled]="salaryForm.invalid">
+          Update Salary Profile
+        </button>
+        <button type="button" class="btn btn-light px-4 border" routerLink="/employees">
+          Back to Directory
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
